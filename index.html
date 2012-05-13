@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Puppet-L2TP by slbmeh</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Puppet-L2TP</h1>
+        <p>Puppet L2TP module - Based on Example42 'NextGen' module standards</p>
+        <p class="view"><a href="https://github.com/slbmeh/puppet-l2tp">View the Project on GitHub <small>slbmeh/puppet-l2tp</small></a></p>
+        <ul>
+          <li><a href="https://github.com/slbmeh/puppet-l2tp/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/slbmeh/puppet-l2tp/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/slbmeh/puppet-l2tp">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Puppet Module: L2TP</h1>
+
+<p>This is a Puppet Module for L2TP.</p>
+
+<p>Made by Steve Buzonas / FancyGuy Technologies</p>
+
+<p>Released under the terms of Apache 2 License.</p>
+
+<h2>Origin</h2>
+
+<p>The structure is based on the second generation layout ("NextGen") of <a href="http://www.example42.com">Example42</a> Puppet Modules.</p>
+
+<p>The functionality is based on <a href="https://github.com/jfryman/puppet-l2tp_server">puppet-l2tp_server</a> by James Fryman (<a href="https://github.com/jfryman" class="user-mention">@jfryman</a>)</p>
+
+<h2>Dependencies</h2>
+
+<p>This module requires functions provided by the Example42 Puppi module (you need it even if you don't use and install Puppi)</p>
+
+<p>For detailed info about the logic and usage patterns of Example42 modules check the <a href="https://github.com/example42/Example42-documentation">DOCS</a> directory on <a href="https://github.com/example42/puppet-modules-nextgen">Example42 main modules set</a>.</p>
+
+<h2>USAGE - Basic management</h2>
+
+<ul>
+<li>
+<p>Install l2tp with default settings</p>
+
+<pre><code>class { 'l2tp': }
+</code></pre>
+</li>
+<li>
+<p>Install a specific version of l2tp package</p>
+
+<pre><code>class { 'l2tp':
+  version =&gt; '1.0.1',
+}
+</code></pre>
+</li>
+<li>
+<p>Disable l2tp service.</p>
+
+<pre><code>class { 'l2tp':
+  disable =&gt; true
+}
+</code></pre>
+</li>
+<li>
+<p>Remove l2tp package</p>
+
+<pre><code>class { 'l2tp':
+  absent =&gt; true
+}
+</code></pre>
+</li>
+<li>
+<p>Enable auditing without without making changes on existing l2tp configuration files</p>
+
+<pre><code>class { 'l2tp':
+  audit_only =&gt; true
+}
+</code></pre>
+</li>
+</ul><h2>USAGE - Overrides and Customizations</h2>
+
+<ul>
+<li>
+<p>Use custom sources for main config file </p>
+
+<pre><code>class { 'l2tp':
+  source =&gt; [ "puppet:///modules/fglabs/l2tp/l2tp.conf-${hostname}" , "puppet:///modules/fglabs/l2tp/l2tp.conf" ], 
+}
+</code></pre>
+</li>
+<li>
+<p>Use custom source directory for the whole configuration dir</p>
+
+<pre><code>class { 'l2tp':
+  source_dir       =&gt; 'puppet:///modules/fglabs/l2tp/conf/',
+  source_dir_purge =&gt; false, # Set to true to purge any existing file not present in $source_dir
+}
+</code></pre>
+</li>
+<li>
+<p>Use custom template for main config file. Note that template and source arguments are alternative. </p>
+
+<pre><code>class { 'l2tp':
+  template =&gt; 'fancyguy/l2tp/l2tp.conf.erb',
+}
+</code></pre>
+</li>
+<li>
+<p>Automatically include a custom subclass</p>
+
+<pre><code>class { 'l2tp':
+  my_class =&gt; 'l2tp::fancyguy',
+}
+</code></pre>
+</li>
+</ul><h2>USAGE - Example42 extensions management</h2>
+
+<ul>
+<li>
+<p>Activate puppi (recommended, but disabled by default)</p>
+
+<pre><code>class { 'l2tp':
+  puppi    =&gt; true,
+}
+</code></pre>
+</li>
+<li>
+<p>Activate puppi and use a custom puppi_helper template (to be provided separately with a puppi::helper define ) to customize the output of puppi commands </p>
+
+<pre><code>class { 'l2tp':
+  puppi        =&gt; true,
+  puppi_helper =&gt; 'myhelper', 
+}
+</code></pre>
+</li>
+<li>
+<p>Activate automatic monitoring (recommended, but disabled by default). This option requires the usage of Example42 monitor and relevant monitor tools modules</p>
+
+<pre><code>class { 'l2tp':
+  monitor      =&gt; true,
+  monitor_tool =&gt; [ 'nagios' , 'monit' , 'munin' ],
+}
+</code></pre>
+</li>
+<li>
+<p>Activate automatic firewalling. This option requires the usage of Example42 firewall and relevant firewall tools modules</p>
+
+<pre><code>class { 'l2tp':       
+  firewall      =&gt; true,
+  firewall_tool =&gt; 'iptables',
+  firewall_src  =&gt; '10.42.0.0/24',
+  firewall_dst  =&gt; $ipaddress_eth0,
+}
+</code></pre>
+</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/slbmeh">slbmeh</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
