@@ -1,6 +1,6 @@
-# = Class: foo
+# = Class: l2tp
 #
-# This is the main foo class
+# This is the main l2tp class
 #
 #
 # == Parameters
@@ -10,38 +10,38 @@
 #
 # [*my_class*]
 #   Name of a custom class to autoload to manage module's customizations
-#   If defined, foo class will automatically "include $my_class"
-#   Can be defined also by the (top scope) variable $foo_myclass
+#   If defined, l2tp class will automatically "include $my_class"
+#   Can be defined also by the (top scope) variable $l2tp_myclass
 #
 # [*source*]
 #   Sets the content of source parameter for main configuration file
-#   If defined, foo main config file will have the param: source => $source
-#   Can be defined also by the (top scope) variable $foo_source
+#   If defined, l2tp main config file will have the param: source => $source
+#   Can be defined also by the (top scope) variable $l2tp_source
 #
 # [*source_dir*]
-#   If defined, the whole foo configuration directory content is retrieved
+#   If defined, the whole l2tp configuration directory content is retrieved
 #   recursively from the specified source
 #   (source => $source_dir , recurse => true)
-#   Can be defined also by the (top scope) variable $foo_source_dir
+#   Can be defined also by the (top scope) variable $l2tp_source_dir
 #
 # [*source_dir_purge*]
 #   If set to true (default false) the existing configuration directory is
 #   mirrored with the content retrieved from source_dir
 #   (source => $source_dir , recurse => true , purge => true)
-#   Can be defined also by the (top scope) variable $foo_source_dir_purge
+#   Can be defined also by the (top scope) variable $l2tp_source_dir_purge
 #
 # [*template*]
 #   Sets the path to the template to use as content for main configuration file
-#   If defined, foo main config file has: content => content("$template")
+#   If defined, l2tp main config file has: content => content("$template")
 #   Note source and template parameters are mutually exclusive: don't use both
-#   Can be defined also by the (top scope) variable $foo_template
+#   Can be defined also by the (top scope) variable $l2tp_template
 #
 # [*options*]
 #   An hash of custom options to be used in templates for arbitrary settings.
-#   Can be defined also by the (top scope) variable $foo_options
+#   Can be defined also by the (top scope) variable $l2tp_options
 #
 # [*service_autorestart*]
-#   Automatically restarts the foo service when there is a change in
+#   Automatically restarts the l2tp service when there is a change in
 #   configuration files. Default: true, Set to false if you don't want to
 #   automatically restart the service.
 #
@@ -53,102 +53,102 @@
 #
 # [*absent*]
 #   Set to 'true' to remove package(s) installed by module
-#   Can be defined also by the (top scope) variable $foo_absent
+#   Can be defined also by the (top scope) variable $l2tp_absent
 #
 # [*disable*]
 #   Set to 'true' to disable service(s) managed by module
-#   Can be defined also by the (top scope) variable $foo_disable
+#   Can be defined also by the (top scope) variable $l2tp_disable
 #
 # [*disableboot*]
 #   Set to 'true' to disable service(s) at boot, without checks if it's running
 #   Use this when the service is managed by a tool like a cluster software
-#   Can be defined also by the (top scope) variable $foo_disableboot
+#   Can be defined also by the (top scope) variable $l2tp_disableboot
 #
 # [*monitor*]
 #   Set to 'true' to enable monitoring of the services provided by the module
-#   Can be defined also by the (top scope) variables $foo_monitor
+#   Can be defined also by the (top scope) variables $l2tp_monitor
 #   and $monitor
 #
 # [*monitor_tool*]
 #   Define which monitor tools (ad defined in Example42 monitor module)
-#   you want to use for foo checks
-#   Can be defined also by the (top scope) variables $foo_monitor_tool
+#   you want to use for l2tp checks
+#   Can be defined also by the (top scope) variables $l2tp_monitor_tool
 #   and $monitor_tool
 #
 # [*monitor_target*]
 #   The Ip address or hostname to use as a target for monitoring tools.
 #   Default is the fact $ipaddress
-#   Can be defined also by the (top scope) variables $foo_monitor_target
+#   Can be defined also by the (top scope) variables $l2tp_monitor_target
 #   and $monitor_target
 #
 # [*puppi*]
 #   Set to 'true' to enable creation of module data files that are used by puppi
-#   Can be defined also by the (top scope) variables $foo_puppi and $puppi
+#   Can be defined also by the (top scope) variables $l2tp_puppi and $puppi
 #
 # [*puppi_helper*]
 #   Specify the helper to use for puppi commands. The default for this module
 #   is specified in params.pp and is generally a good choice.
 #   You can customize the output of puppi commands for this module using another
 #   puppi helper. Use the define puppi::helper to create a new custom helper
-#   Can be defined also by the (top scope) variables $foo_puppi_helper
+#   Can be defined also by the (top scope) variables $l2tp_puppi_helper
 #   and $puppi_helper
 #
 # [*firewall*]
 #   Set to 'true' to enable firewalling of the services provided by the module
-#   Can be defined also by the (top scope) variables $foo_firewall
+#   Can be defined also by the (top scope) variables $l2tp_firewall
 #   and $firewall
 #
 # [*firewall_tool*]
 #   Define which firewall tool(s) (ad defined in Example42 firewall module)
-#   you want to use to open firewall for foo port(s)
-#   Can be defined also by the (top scope) variables $foo_firewall_tool
+#   you want to use to open firewall for l2tp port(s)
+#   Can be defined also by the (top scope) variables $l2tp_firewall_tool
 #   and $firewall_tool
 #
 # [*firewall_src*]
-#   Define which source ip/net allow for firewalling foo. Default: 0.0.0.0/0
-#   Can be defined also by the (top scope) variables $foo_firewall_src
+#   Define which source ip/net allow for firewalling l2tp. Default: 0.0.0.0/0
+#   Can be defined also by the (top scope) variables $l2tp_firewall_src
 #   and $firewall_src
 #
 # [*firewall_dst*]
 #   Define which destination ip to use for firewalling. Default: $ipaddress
-#   Can be defined also by the (top scope) variables $foo_firewall_dst
+#   Can be defined also by the (top scope) variables $l2tp_firewall_dst
 #   and $firewall_dst
 #
 # [*debug*]
 #   Set to 'true' to enable modules debugging
-#   Can be defined also by the (top scope) variables $foo_debug and $debug
+#   Can be defined also by the (top scope) variables $l2tp_debug and $debug
 #
 # [*audit_only*]
 #   Set to 'true' if you don't intend to override existing configuration files
 #   and want to audit the difference between existing files and the ones
 #   managed by Puppet.
-#   Can be defined also by the (top scope) variables $foo_audit_only
+#   Can be defined also by the (top scope) variables $l2tp_audit_only
 #   and $audit_only
 #
-# Default class params - As defined in foo::params.
+# Default class params - As defined in l2tp::params.
 # Note that these variables are mostly defined and used in the module itself,
 # overriding the default values might not affected all the involved components.
 # Set and override them only if you know what you're doing.
 # Note also that you can't override/set them via top scope variables.
 #
 # [*package*]
-#   The name of foo package
+#   The name of l2tp package
 #
 # [*service*]
-#   The name of foo service
+#   The name of l2tp service
 #
 # [*service_status*]
-#   If the foo service init script supports status argument
+#   If the l2tp service init script supports status argument
 #
 # [*process*]
-#   The name of foo process
+#   The name of l2tp process
 #
 # [*process_args*]
-#   The name of foo arguments. Used by puppi and monitor.
-#   Used only in case the foo process name is generic (java, ruby...)
+#   The name of l2tp arguments. Used by puppi and monitor.
+#   Used only in case the l2tp process name is generic (java, ruby...)
 #
 # [*process_user*]
-#   The name of the user foo runs with. Used by puppi and monitor.
+#   The name of the user l2tp runs with. Used by puppi and monitor.
 #
 # [*config_dir*]
 #   Main configuration directory. Used by puppi
@@ -184,19 +184,19 @@
 #   The listening port, if any, of the service.
 #   This is used by monitor, firewall and puppi (optional) components
 #   Note: This doesn't necessarily affect the service configuration file
-#   Can be defined also by the (top scope) variable $foo_port
+#   Can be defined also by the (top scope) variable $l2tp_port
 #
 # [*protocol*]
 #   The protocol used by the the service.
 #   This is used by monitor, firewall and puppi (optional) components
-#   Can be defined also by the (top scope) variable $foo_protocol
+#   Can be defined also by the (top scope) variable $l2tp_protocol
 #
 #
 # == Examples
 #
 # You can use this class in 2 ways:
-# - Set variables (at top scope level on in a ENC) and "include foo"
-# - Call foo as a parametrized class
+# - Set variables (at top scope level on in a ENC) and "include l2tp"
+# - Call l2tp as a parametrized class
 #
 # See README for details.
 #
@@ -204,7 +204,7 @@
 # == Author
 #   Alessandro Franceschi <al@lab42.it/>
 #
-class foo (
+class l2tp (
   $my_class            = params_lookup( 'my_class' ),
   $source              = params_lookup( 'source' ),
   $source_dir          = params_lookup( 'source_dir' ),
@@ -245,7 +245,7 @@ class foo (
   $log_file            = params_lookup( 'log_file' ),
   $port                = params_lookup( 'port' ),
   $protocol            = params_lookup( 'protocol' )
-  ) inherits foo::params {
+  ) inherits l2tp::params {
 
   $bool_source_dir_purge=any2bool($source_dir_purge)
   $bool_service_autorestart=any2bool($service_autorestart)
@@ -259,178 +259,178 @@ class foo (
   $bool_audit_only=any2bool($audit_only)
 
   ### Definition of some variables used in the module
-  $manage_package = $foo::bool_absent ? {
+  $manage_package = $l2tp::bool_absent ? {
     true  => 'absent',
-    false => $foo::version,
+    false => $l2tp::version,
   }
 
-  $manage_service_enable = $foo::bool_disableboot ? {
+  $manage_service_enable = $l2tp::bool_disableboot ? {
     true    => false,
-    default => $foo::bool_disable ? {
+    default => $l2tp::bool_disable ? {
       true    => false,
-      default => $foo::bool_absent ? {
+      default => $l2tp::bool_absent ? {
         true  => false,
         false => true,
       },
     },
   }
 
-  $manage_service_ensure = $foo::bool_disable ? {
+  $manage_service_ensure = $l2tp::bool_disable ? {
     true    => 'stopped',
-    default =>  $foo::bool_absent ? {
+    default =>  $l2tp::bool_absent ? {
       true    => 'stopped',
       default => 'running',
     },
   }
 
-  $manage_service_autorestart = $foo::bool_service_autorestart ? {
-    true    => Service[foo],
+  $manage_service_autorestart = $l2tp::bool_service_autorestart ? {
+    true    => Service[l2tp],
     false   => undef,
   }
 
-  $manage_file = $foo::bool_absent ? {
+  $manage_file = $l2tp::bool_absent ? {
     true    => 'absent',
     default => 'present',
   }
 
-  if $foo::bool_absent == true
-  or $foo::bool_disable == true
-  or $foo::bool_disableboot == true {
+  if $l2tp::bool_absent == true
+  or $l2tp::bool_disable == true
+  or $l2tp::bool_disableboot == true {
     $manage_monitor = false
   } else {
     $manage_monitor = true
   }
 
-  if $foo::bool_absent == true
-  or $foo::bool_disable == true {
+  if $l2tp::bool_absent == true
+  or $l2tp::bool_disable == true {
     $manage_firewall = false
   } else {
     $manage_firewall = true
   }
 
-  $manage_audit = $foo::bool_audit_only ? {
+  $manage_audit = $l2tp::bool_audit_only ? {
     true  => 'all',
     false => undef,
   }
 
-  $manage_file_replace = $foo::bool_audit_only ? {
+  $manage_file_replace = $l2tp::bool_audit_only ? {
     true  => false,
     false => true,
   }
 
-  $manage_file_source = $foo::source ? {
+  $manage_file_source = $l2tp::source ? {
     ''        => undef,
-    default   => $foo::source,
+    default   => $l2tp::source,
   }
 
-  $manage_file_content = $foo::template ? {
+  $manage_file_content = $l2tp::template ? {
     ''        => undef,
-    default   => template($foo::template),
+    default   => template($l2tp::template),
   }
 
   ### Managed resources
-  package { 'foo':
-    ensure => $foo::manage_package,
-    name   => $foo::package,
+  package { 'l2tp':
+    ensure => $l2tp::manage_package,
+    name   => $l2tp::package,
   }
 
-  service { 'foo':
-    ensure     => $foo::manage_service_ensure,
-    name       => $foo::service,
-    enable     => $foo::manage_service_enable,
-    hasstatus  => $foo::service_status,
-    pattern    => $foo::process,
-    require    => Package['foo'],
+  service { 'l2tp':
+    ensure     => $l2tp::manage_service_ensure,
+    name       => $l2tp::service,
+    enable     => $l2tp::manage_service_enable,
+    hasstatus  => $l2tp::service_status,
+    pattern    => $l2tp::process,
+    require    => Package['l2tp'],
   }
 
-  file { 'foo.conf':
-    ensure  => $foo::manage_file,
-    path    => $foo::config_file,
-    mode    => $foo::config_file_mode,
-    owner   => $foo::config_file_owner,
-    group   => $foo::config_file_group,
-    require => Package['foo'],
-    notify  => $foo::manage_service_autorestart,
-    source  => $foo::manage_file_source,
-    content => $foo::manage_file_content,
-    replace => $foo::manage_file_replace,
-    audit   => $foo::manage_audit,
+  file { 'l2tp.conf':
+    ensure  => $l2tp::manage_file,
+    path    => $l2tp::config_file,
+    mode    => $l2tp::config_file_mode,
+    owner   => $l2tp::config_file_owner,
+    group   => $l2tp::config_file_group,
+    require => Package['l2tp'],
+    notify  => $l2tp::manage_service_autorestart,
+    source  => $l2tp::manage_file_source,
+    content => $l2tp::manage_file_content,
+    replace => $l2tp::manage_file_replace,
+    audit   => $l2tp::manage_audit,
   }
 
-  # The whole foo configuration directory can be recursively overriden
-  if $foo::source_dir {
-    file { 'foo.dir':
+  # The whole l2tp configuration directory can be recursively overriden
+  if $l2tp::source_dir {
+    file { 'l2tp.dir':
       ensure  => directory,
-      path    => $foo::config_dir,
-      require => Package['foo'],
-      notify  => $foo::manage_service_autorestart,
-      source  => $foo::source_dir,
+      path    => $l2tp::config_dir,
+      require => Package['l2tp'],
+      notify  => $l2tp::manage_service_autorestart,
+      source  => $l2tp::source_dir,
       recurse => true,
-      purge   => $foo::source_dir_purge,
-      replace => $foo::manage_file_replace,
-      audit   => $foo::manage_audit,
+      purge   => $l2tp::source_dir_purge,
+      replace => $l2tp::manage_file_replace,
+      audit   => $l2tp::manage_audit,
     }
   }
 
 
   ### Include custom class if $my_class is set
-  if $foo::my_class {
-    include $foo::my_class
+  if $l2tp::my_class {
+    include $l2tp::my_class
   }
 
 
   ### Provide puppi data, if enabled ( puppi => true )
-  if $foo::bool_puppi == true {
+  if $l2tp::bool_puppi == true {
     $classvars=get_class_args()
-    puppi::ze { 'foo':
-      ensure    => $foo::manage_file,
+    puppi::ze { 'l2tp':
+      ensure    => $l2tp::manage_file,
       variables => $classvars,
-      helper    => $foo::puppi_helper,
+      helper    => $l2tp::puppi_helper,
     }
   }
 
 
   ### Service monitoring, if enabled ( monitor => true )
-  if $foo::bool_monitor == true {
-    monitor::port { "foo_${foo::protocol}_${foo::port}":
-      protocol => $foo::protocol,
-      port     => $foo::port,
-      target   => $foo::monitor_target,
-      tool     => $foo::monitor_tool,
-      enable   => $foo::manage_monitor,
+  if $l2tp::bool_monitor == true {
+    monitor::port { "l2tp_${l2tp::protocol}_${l2tp::port}":
+      protocol => $l2tp::protocol,
+      port     => $l2tp::port,
+      target   => $l2tp::monitor_target,
+      tool     => $l2tp::monitor_tool,
+      enable   => $l2tp::manage_monitor,
     }
-    monitor::process { 'foo_process':
-      process  => $foo::process,
-      service  => $foo::service,
-      pidfile  => $foo::pid_file,
-      user     => $foo::process_user,
-      argument => $foo::process_args,
-      tool     => $foo::monitor_tool,
-      enable   => $foo::manage_monitor,
+    monitor::process { 'l2tp_process':
+      process  => $l2tp::process,
+      service  => $l2tp::service,
+      pidfile  => $l2tp::pid_file,
+      user     => $l2tp::process_user,
+      argument => $l2tp::process_args,
+      tool     => $l2tp::monitor_tool,
+      enable   => $l2tp::manage_monitor,
     }
   }
 
 
   ### Firewall management, if enabled ( firewall => true )
-  if $foo::bool_firewall == true {
-    firewall { "foo_${foo::protocol}_${foo::port}":
-      source      => $foo::firewall_src,
-      destination => $foo::firewall_dst,
-      protocol    => $foo::protocol,
-      port        => $foo::port,
+  if $l2tp::bool_firewall == true {
+    firewall { "l2tp_${l2tp::protocol}_${l2tp::port}":
+      source      => $l2tp::firewall_src,
+      destination => $l2tp::firewall_dst,
+      protocol    => $l2tp::protocol,
+      port        => $l2tp::port,
       action      => 'allow',
       direction   => 'input',
-      tool        => $foo::firewall_tool,
-      enable      => $foo::manage_firewall,
+      tool        => $l2tp::firewall_tool,
+      enable      => $l2tp::manage_firewall,
     }
   }
 
 
   ### Debugging, if enabled ( debug => true )
-  if $foo::bool_debug == true {
-    file { 'debug_foo':
-      ensure  => $foo::manage_file,
-      path    => "${settings::vardir}/debug-foo",
+  if $l2tp::bool_debug == true {
+    file { 'debug_l2tp':
+      ensure  => $l2tp::manage_file,
+      path    => "${settings::vardir}/debug-l2tp",
       mode    => '0640',
       owner   => 'root',
       group   => 'root',

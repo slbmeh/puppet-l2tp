@@ -1,27 +1,27 @@
-# Class: foo::params
+# Class: l2tp::params
 #
-# This class defines default parameters used by the main module class foo
+# This class defines default parameters used by the main module class l2tp
 # Operating Systems differences in names and paths are addressed here
 #
 # == Variables
 #
-# Refer to foo class for the variables defined here.
+# Refer to l2tp class for the variables defined here.
 #
 # == Usage
 #
 # This class is not intended to be used directly.
 # It may be imported or inherited by other classes
 #
-class foo::params {
+class l2tp::params {
 
   ### Application related parameters
 
   $package = $::operatingsystem ? {
-    default => 'foo',
+    default => 'l2tp',
   }
 
   $service = $::operatingsystem ? {
-    default => 'foo',
+    default => 'l2tp',
   }
 
   $service_status = $::operatingsystem ? {
@@ -29,7 +29,7 @@ class foo::params {
   }
 
   $process = $::operatingsystem ? {
-    default => 'foo',
+    default => 'l2tp',
   }
 
   $process_args = $::operatingsystem ? {
@@ -37,15 +37,15 @@ class foo::params {
   }
 
   $process_user = $::operatingsystem ? {
-    default => 'foo',
+    default => 'l2tp',
   }
 
   $config_dir = $::operatingsystem ? {
-    default => '/etc/foo',
+    default => '/etc/l2tp',
   }
 
   $config_file = $::operatingsystem ? {
-    default => '/etc/foo/foo.conf',
+    default => '/etc/l2tp/l2tp.conf',
   }
 
   $config_file_mode = $::operatingsystem ? {
@@ -61,24 +61,24 @@ class foo::params {
   }
 
   $config_file_init = $::operatingsystem ? {
-    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/foo',
-    default                   => '/etc/sysconfig/foo',
+    /(?i:Debian|Ubuntu|Mint)/ => '/etc/default/l2tp',
+    default                   => '/etc/sysconfig/l2tp',
   }
 
   $pid_file = $::operatingsystem ? {
-    default => '/var/run/foo.pid',
+    default => '/var/run/l2tp.pid',
   }
 
   $data_dir = $::operatingsystem ? {
-    default => '/etc/foo',
+    default => '/etc/l2tp',
   }
 
   $log_dir = $::operatingsystem ? {
-    default => '/var/log/foo',
+    default => '/var/log/l2tp',
   }
 
   $log_file = $::operatingsystem ? {
-    default => '/var/log/foo/foo.log',
+    default => '/var/log/l2tp/l2tp.log',
   }
 
   $port = '42'
